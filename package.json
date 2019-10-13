@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "expo": "^35.0.0",
+    "native-base": "^2.13.8",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@types/react": "^16.8.23",
+    "@types/react-material-ui-form-validator": "^2.0.4",
     "@types/react-native": "^0.57.65",
     "babel-preset-expo": "^7.0.0",
     "typescript": "^3.4.5"
