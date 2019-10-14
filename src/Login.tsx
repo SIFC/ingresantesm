@@ -39,7 +39,7 @@ export default class Login extends Component {
             </Item> */}
               <Text>  </Text>
 
-            <Button  style={{  width:"30%" }} >
+            <Button  style={{  width:"50%", }} >
                 <Text>Aceptar</Text>
             </Button>
             </Form>
