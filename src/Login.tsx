@@ -3,9 +3,7 @@ import { StyleSheet, View, SafeAreaView, TextInput } from 'react-native';
 import { Container, Header, Content, Form, Item, Input, Label, Text, Separator , Button} from 'native-base';
 
 export default class Login extends Component {
-    handleSubmit = () =>{
-
-    }
+    
   render() {
     return (
      
@@ -39,7 +37,7 @@ export default class Login extends Component {
             </Item> */}
               <Text>  </Text>
 
-            <Button  style={{  width:"50%", }} >
+            <Button  block style={styles.button} >
                 <Text>Aceptar</Text>
             </Button>
             </Form>
@@ -61,12 +59,12 @@ const styles = StyleSheet.create({
    width:"100%"
 
   },
-  headerText: {  
-    fontSize: 20,  
-    textAlign: "center",  
-    margin: 10,  
-    fontWeight: "bold"  
-},  
+//   headerText: {  
+//     fontSize: 20,  
+//     textAlign: "center",  
+//     margin: 10,  
+//     fontWeight: "bold"  
+// },  
 TextInputStyle: {  
     textAlign: 'center',  
     height: 40,  
@@ -74,5 +72,10 @@ TextInputStyle: {
     borderWidth: 2,  
     borderColor: '#009688',  
     marginBottom: 10  
+},
+button: {
+  marginBottom: 30,
+  width: 200,
+  alignItems: 'center'
 },
 });
