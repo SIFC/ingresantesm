@@ -1,12 +1,51 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, SafeAreaView, TextInput } from 'react-native';
 import { Container, Header, Content, Form, Item, Input, Label, Text, Separator , Button} from 'native-base';
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 
 export default class Login extends Component {
-    
+
+  state;
+  constructor(props) {
+    super(props);
+    this.state = {
+      isReady: false,
+      // numero:false,
+      hash:"",
+      lu:"43882",
+      dni:"36112457",
+      // n_inscripcion:false,
+      spinner:false,
+      error:false
+    };
+  }
+
+  // async componentDidMount() {
+  //   await Font.loadAsync({
+  //     Roboto: require('native-base/Fonts/Roboto.ttf'),
+  //     Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+  //     ...Ionicons.font,
+  //   });
+  //   this.setState({ isReady: true });
+  // }
+
+  login = async () => {
+    // alert('logueate pue');
+    let formData = new FormData();
+    formData.append('lu', this.state.lu)
+    formData.append('dni', this.state.dni)
+
+    let response = await fetch('http://192.168.0.7:8000/api/login', {
+      method: 'POST',
+      body:formData,
+  }).then((response) => response.json())
+    .then(json => json)
+    .catch(error => console.log(error));
+  }
+
   render() {
     return (
-     
         <View style={styles.container}> 
         <Content>
         <Form >
@@ -37,16 +76,18 @@ export default class Login extends Component {
             </Item> */}
               <Text>  </Text>
 
-            <Button  block style={styles.button} >
+            <Button  block style={styles.button} 
+            onPress= {this.login}>
                 <Text>Aceptar</Text>
             </Button>
             </Form>
         </Content>
         </View>
      
-    );
-  }
+    )
+  } 
 }
+
 
 const styles = StyleSheet.create({
   container: {
