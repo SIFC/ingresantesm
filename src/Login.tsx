@@ -19,7 +19,7 @@ export default class Login extends Component {
       dni:"36112457",
       // n_inscripcion:false,
       spinner:false,
-      server:"http://192.168.43.137/ingresantesw/public",
+      server:"http://192.168.0.7/ingresantesw/public",
 
       error:false
     };
@@ -45,11 +45,11 @@ export default class Login extends Component {
       method: 'POST',
       body:formData,
   }).then((response) => response.json())
-    .then(json =>console.log(json))
-    .catch(error => console.log(error));
+    .then(json =>alert(json.name))
+    .catch(error => alert("Los datos ingresados no son corretos "));
   }
 
-  render() {
+  render() { 
     if (!this.state.isReady) {
       return <AppLoading />;
     }
