@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, View, SafeAreaView, TextInput } from 'react-native';
 import { Container, Header, Content, Form, Item, Input, Label, Text, Separator , Button} from 'native-base';
 import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
+
 import { Ionicons } from '@expo/vector-icons';
 
 export default class Login extends Component {
@@ -17,19 +19,21 @@ export default class Login extends Component {
       dni:"36112457",
       // n_inscripcion:false,
       spinner:false,
+      server:"http://192.168.43.137/ingresantesw/public",
 
       error:false
     };
   }
 
-  // async componentDidMount() {
-  //   await Font.loadAsync({
-  //     Roboto: require('native-base/Fonts/Roboto.ttf'),
-  //     Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
-  //     ...Ionicons.font,
-  //   });
-  //   this.setState({ isReady: true });
-  // }
+  async componentDidMount() {
+    await Font.loadAsync({
+      Roboto: require('../node_modules/native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('../node_modules/native-base/Fonts/Roboto_medium.ttf'),
+      ...Ionicons.font,
+    });
+    this.setState({ isReady: true });
+  }
+
 
   login = async () => {
     // alert('logueate pue');
@@ -37,15 +41,18 @@ export default class Login extends Component {
     formData.append('lu', this.state.lu)
     formData.append('dni', this.state.dni)
 
-   let response = await fetch('http://localhost:8000/api/login', {
+   let response = await fetch(this.state.server+'/api/login', {
       method: 'POST',
       body:formData,
   }).then((response) => response.json())
-    .then(json =>alert(json))
-    .catch(error => alert(error + ': ' + this.state.lu + ' '+ this.state.dni ));
+    .then(json =>console.log(json))
+    .catch(error => console.log(error));
   }
 
   render() {
+    if (!this.state.isReady) {
+      return <AppLoading />;
+    }
     return (
         <View style={styles.container}> 
         <Content>
