@@ -17,6 +17,7 @@ export default class Login extends Component {
       dni:"36112457",
       // n_inscripcion:false,
       spinner:false,
+
       error:false
     };
   }
@@ -36,12 +37,12 @@ export default class Login extends Component {
     formData.append('lu', this.state.lu)
     formData.append('dni', this.state.dni)
 
-    let response = await fetch('http://192.168.0.7:8000/api/login', {
+   let response = await fetch('http://localhost:8000/api/login', {
       method: 'POST',
       body:formData,
   }).then((response) => response.json())
-    .then(json => json)
-    .catch(error => console.log(error));
+    .then(json =>alert(json))
+    .catch(error => alert(error + ': ' + this.state.lu + ' '+ this.state.dni ));
   }
 
   render() {
@@ -52,11 +53,19 @@ export default class Login extends Component {
         
           <Item floatingLabel last  > 
           <Label >DNI</Label>
-          <Input keyboardType={'numeric'} />
+          <Input keyboardType={'numeric'} 
+           onChangeText={dni => this.setState({ dni })}
+           value={this.state.dni}
+          //  value={this.state.dni}
+           />
           </Item>
           <Item floatingLabel last >
           <Label >LU</Label>
-          <Input keyboardType={'numeric'} />
+          <Input keyboardType={'numeric'} 
+           onChangeText={lu => this.setState({ lu })}
+           value={this.state.lu}
+          //  value={this.state.lu}
+           />
           </Item>
           {/* <TextInput  
           placeholder="DNI"  
