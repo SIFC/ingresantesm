@@ -19,7 +19,7 @@ export default class Login extends Component {
       dni:"36112457",
       // n_inscripcion:false,
       spinner:false,
-      server:"http://192.168.0.7/ingresantesw/public",
+      server:"http://192.168.0.7/App-Laravel/ingresantesw/public",
 
       error:false
     };
