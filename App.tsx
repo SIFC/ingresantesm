@@ -1,12 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Login from './src/Login';
+import Home from './src/Home'
 import { Container } from 'native-base';
 
 export default function App() {
+ 
   return (
     <Container>
-    <Login></Login> 
+    {/* <Login></Login>  */}
+    <Home></Home>
     </Container>
     // <View style={styles.container}>
     //   <Text>Open up App.tsx to start working on your app!</Text>
