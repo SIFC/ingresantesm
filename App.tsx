@@ -8,10 +8,10 @@ export default function App() {
  
   return (
     <Container>
-    {/* <Login></Login>  */}
-    <Home></Home>
+    <Login></Login> 
+    {/* <Home></Home> */}
     </Container>
-    // <View style={styles.container}>
+    // <View >
     //   <Text>Open up App.tsx to start working on your app!</Text>
       
     // </View>

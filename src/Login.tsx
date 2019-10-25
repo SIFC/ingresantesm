@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, Props } from 'react';
 import { StyleSheet, View, SafeAreaView, TextInput } from 'react-native';
 import { Container, Header, Content, Form, Item, Input, Label, Text, Separator , Button} from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 
 import { Ionicons } from '@expo/vector-icons';
+import { ActionHome } from 'material-ui/svg-icons';
+import { createStackNavigator } from 'react-navigation-stack';
 
-export default class Login extends Component {
+interface Props {
+  navigation: any
+}
+export default class Login extends React.Component <Props> {
 
   state;
   constructor(props) {
@@ -45,7 +50,7 @@ export default class Login extends Component {
       method: 'POST',
       body:formData,
   }).then((response) => response.json())
-    .then(json =>alert(json.name))
+    .then(json  => this.props.navigation.navigate('Home') ) //=>alert(json.name))
     .catch(error => alert("Los datos ingresados no son corretos "));
   }
 
@@ -136,3 +141,13 @@ button: {
   alignItems: 'center'
 },
 });
+const RootStack = createStackNavigator(
+  {
+    Home: Home,
+   
+  
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
