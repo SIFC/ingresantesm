@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Item, Input, Header, 
+import { Container, Item, Input, 
     Title, Content, Footer, FooterTab, 
     Left, Right, Body, Icon, CardItem, Toast, 
     Spinner, H1, H2, H3, Drawer, Grid, Col, Row , Text, Separator, Button} from 'native-base';
@@ -17,23 +17,23 @@ import Alumno from './Alumno';
   // import ClientesList from './Clientes/Clientes-List';
   // import TiendaPerfil from './Tienda/Tienda-Perfil';
   // import ProductosList from './Productos/Productos-List';
-
+import Header from './components/Header'
 
 interface Props {
   navigation: any
 }
 
-class Home extends React.Component <Props>{
+export default class Home extends React.Component <Props>{
   render() {
     return (
       
       <SafeAreaView style={styles.container}>
-       
-            <Separator />
-            <View >
+      
+            {/* <Separator /> */}
+            {/* <View > */}
             <Grid>
               <Row>
-              <Col style={{ backgroundColor: '#635DB7', height: 200 }}>
+              <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
               {/* <Button
           title="Go to Details"
           onPress={() => this.props.navigation.navigate('Details')}
@@ -43,7 +43,7 @@ class Home extends React.Component <Props>{
                     <Text >Talleres</Text> 
                   
                   </Button></Col>
-                <Col style={{ backgroundColor: '#635DB7', height: 200 }}>
+                <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
                   <Button full  success style={{height:"100%"  }} onPress={() => this.props.navigation.navigate('Alumnos')}>
                     <Icon name='cart'/>
                     <Text>Alumnos</Text>  
@@ -61,8 +61,8 @@ class Home extends React.Component <Props>{
                   </Button>
                   </Col></Row> */}
               </Grid>
-              </View>
-              <Separator />
+              {/* </View> */}
+               {/* <Separator /> */}
               </SafeAreaView>
     );
   }
@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     // height: "100%",
     //  marginVertical: 16,
-     marginHorizontal: 16,
-    marginTop: "10%",
+    //  marginHorizontal: 16,
+    // marginTop: "10%",
     // paddingHorizontal: 10
      
   },
@@ -138,6 +138,7 @@ class DetailsScreen extends React.Component <Props>{
 
 const RootStack = createStackNavigator(
   {
+    Header: Header,
     Home: Home,
     Dell: DetailsScreen,
     Talleres: Taller,
@@ -149,12 +150,11 @@ const RootStack = createStackNavigator(
   }
 );
 
-const AppContainer = createAppContainer(RootStack);
+export  const AppContainer = createAppContainer(RootStack);
 
-export default class App extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
-}
-
+// export default class App extends React.Component {
+//   render() {
+//     return <AppContainer />;
+//   }
+// }
 
