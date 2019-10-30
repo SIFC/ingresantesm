@@ -39,13 +39,13 @@ export default class Home extends React.Component <Props>{
           onPress={() => this.props.navigation.navigate('Details')}
         /> */}
                   <Button full  primary  style={{height:"100%" }}  onPress={() => this.props.navigation.navigate('Talleres')}>
-                    <Icon name='cube'/>
+                    {/* <Icon name='cube'/> */}
                     <Text >Talleres</Text> 
                   
                   </Button></Col>
                 <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
                   <Button full  success style={{height:"100%"  }} onPress={() => this.props.navigation.navigate('Alumnos')}>
-                    <Icon name='cart'/>
+                    {/* <Icon name='cart'/> */}
                     <Text>Alumnos</Text>  
                   </Button></Col>
                   </Row>
