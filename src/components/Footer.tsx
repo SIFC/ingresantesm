@@ -9,19 +9,19 @@ export default class FooterTabsIconTextExample extends Component {
         <Content />
         <Footer>
           <FooterTab>
-            <Button vertical>
+            <Button vertical onPress={() => alert("Talleres")}>
               <Icon name="apps" />
-              <Text>Menu</Text>
+              <Text>Talleres</Text>
             </Button>
-            <Button vertical>
+            <Button vertical onPress={() => alert("Camara Qr")}>
               <Icon name="camera" />
               <Text>Camera</Text>
             </Button>
-            <Button vertical active>
+            <Button vertical onPress={() => alert("Ubicacion de la Facu")}>
               <Icon active name="navigate" />
               <Text>Ubicación</Text>
             </Button>
-            <Button vertical>
+            <Button vertical onPress={() => alert("Datos del Alumno")}>
               <Icon name="person" />
               <Text>Perfil</Text>
             </Button>

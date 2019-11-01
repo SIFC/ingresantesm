@@ -23,44 +23,46 @@
 // });
 // ---------------------------------------------------------------------
 
-import React, { Component } from "react";
-import { Container, Header, Content, Icon, Picker, Form } from "native-base";
-
+import React, { Component } from 'react';
+import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, } from 'native-base';
+import Footer from './components/Footer'
+import Header from './components/Header'
 export default class Taller extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: undefined
-    };
-  }
-  onValueChange(value: string) {
-    this.setState({
-      selected: value
-    });
-  }
   render() {
     return (
-      <Container>
-       
+    
+     
         <Content>
-          <Form>
-            <Picker
-              mode="dropdown"
-              placeholder="Select One"
-              placeholderStyle={{ color: "#2874F0" }}
-              note={false}
-              selectedValue={this.state.selected}
-              onValueChange={this.onValueChange.bind(this)}
-            >
-              <Picker.Item label="Wallet" value="key0" />
-              <Picker.Item label="ATM Card" value="key1" />
-              <Picker.Item label="Debit Card" value="key2" />
-              <Picker.Item label="Credit Card" value="key3" />
-              <Picker.Item label="Net Banking" value="key4" />
-            </Picker>
-          </Form>
+           <Header></Header>
+          <Separator bordered>
+            <Text>Carrera 1</Text>
+          </Separator>
+          <ListItem>
+          <Button rounded light>
+            <Text>Taller 1</Text>
+          </Button>
+          </ListItem>
+          <ListItem last>
+          <Button rounded light>
+            <Text>Taller 2</Text>
+          </Button>
+          </ListItem>
+          <Separator bordered>
+          <Text>Carrera 2</Text>
+          </Separator>
+          <ListItem>
+          <Button rounded light>
+            <Text>Taller 1</Text>
+          </Button>
+          </ListItem>
+          <ListItem last>
+          <Button rounded light>
+            <Text>Taller 2</Text>
+          </Button>
+          </ListItem>
+          <Footer></Footer>
         </Content>
-      </Container>
+     
     );
   }
 }
