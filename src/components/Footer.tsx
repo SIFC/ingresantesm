@@ -4,9 +4,9 @@ import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text } fro
 export default class FooterTabsIconTextExample extends Component {
   render() {
     return (
-      <Container>
-        {/* <Header /> */}
-        <Content />
+    
+      
+      
         <Footer>
           <FooterTab>
             <Button vertical onPress={() => alert("Talleres")}>
@@ -27,7 +27,7 @@ export default class FooterTabsIconTextExample extends Component {
             </Button>
           </FooterTab>
         </Footer>
-      </Container>
+    
     );
   }
 }

@@ -6,11 +6,10 @@ export default class HeaderIconExample extends Component {
     
     return  (
         
-      <Container>
-        
-          <H3></H3>
-           {/* <Content /> */}
+    
+
         <Header>
+          <H3></H3>
           <Left>
             <Button transparent>
               {/* <Icon name='arrow-back' /> */}
@@ -25,7 +24,7 @@ export default class HeaderIconExample extends Component {
             </Button>
           </Right> */}
         </Header>
-      </Container>
+     
     );
   }
 }

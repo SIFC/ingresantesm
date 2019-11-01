@@ -14,13 +14,13 @@ export default function App() {
   return (
     
     <Container>
-       {/* <Header></Header> */}
+    <Header></Header> 
      {/* <AppContainer></AppContainer>  */}
      {/* <Alumno></Alumno> */}
      <Taller></Taller>  
     {/* <Login></Login>  */}
     {/* <Home></Home> */}
-    {/* <Footer></Footer> */}
+    <Footer></Footer>
     </Container>
     // <View >
     //   <Text>Open up App.tsx to start working on your app!</Text>

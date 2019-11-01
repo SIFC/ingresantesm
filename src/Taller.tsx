@@ -30,37 +30,34 @@ import Header from './components/Header'
 export default class Taller extends Component {
   render() {
     return (
-    
-     
         <Content>
-           <Header></Header>
           <Separator bordered>
-            <Text>Carrera 1</Text>
+            <H1>Carrera 1</H1>
           </Separator>
           <ListItem>
-          <Button rounded light>
+          <Button rounded light onPress={() => alert("Talleres 1")}>
             <Text>Taller 1</Text>
           </Button>
           </ListItem>
           <ListItem last>
-          <Button rounded light>
+          <Button rounded light onPress={() => alert("Talleres 2")}>
             <Text>Taller 2</Text>
           </Button>
           </ListItem>
-          <Separator bordered>
-          <Text>Carrera 2</Text>
+          <Separator bordered >
+          <H1>Carrera 2</H1>
           </Separator>
           <ListItem>
-          <Button rounded light>
+          <Button rounded light onPress={() => alert("Talleres 1")}>
             <Text>Taller 1</Text>
           </Button>
           </ListItem>
           <ListItem last>
-          <Button rounded light>
+          <Button rounded light onPress={() => alert("Talleres 2")}>
             <Text>Taller 2</Text>
           </Button>
           </ListItem>
-          <Footer></Footer>
+          
         </Content>
      
     );
