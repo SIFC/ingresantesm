@@ -2,8 +2,8 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
 
-import Footer from './src/components/Footer';
-import Header from './src/components/Header';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 interface Props {
     navigation: any
