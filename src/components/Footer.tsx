@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text } from 'native-base';
-
-export default class FooterTabsIconTextExample extends Component {
+interface Props {
+  navigation: any
+}
+export default class FooterT extends Component <Props>{
   render() {
     return (
     
@@ -9,7 +11,7 @@ export default class FooterTabsIconTextExample extends Component {
       
         <Footer>
           <FooterTab>
-            <Button vertical onPress={() => alert("Talleres")}>
+            <Button vertical onPress={() => this.props.navigation.navigate('Talleres')}>
               <Icon name="apps" />
               <Text>Talleres</Text>
             </Button>
