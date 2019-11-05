@@ -5,7 +5,11 @@ interface Props {
 }
 export default class Taller_detalles extends Component <Props>{
   static navigationOptions = {
-    title: 'Talleres_detalles'
+    title: 'Talleres_detalles',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#891f1f',
+    },
    };
   render() {
     return (

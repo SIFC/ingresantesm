@@ -6,7 +6,6 @@ export default class HeaderIconExample extends Component {
     
     return  (
         
-    
 
         <Header>
           <H3></H3>

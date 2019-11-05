@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, SafeAreaView, TextInput } from 'react-native';
-import { Container, Header, Content, Form, Item, Input, Label, Text, Separator , Button} from 'native-base';
+import { StyleSheet, View, SafeAreaView, TextInput, Image } from 'react-native';
+import { Container, Header, Content, Form, Item, Input, Label, Text, Separator , Button, CardItem} from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-
+import {} from './components/Header'
 import { Ionicons } from '@expo/vector-icons';
 import { ActionHome } from 'material-ui/svg-icons';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -12,7 +12,14 @@ interface Props {
   navigation: any
 }
 export default class Login extends React.Component <Props> {
-
+  static navigationOptions = {
+    title: 'Login',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#891f1f',
+    },
+    // style:  '#891f1f'
+   };
   state;
   constructor(props) {
     super(props);
@@ -50,7 +57,9 @@ export default class Login extends React.Component <Props> {
       method: 'POST',
       body:formData,
   }).then((response) => response.json())
-    .then(json  => this.props.navigation.navigate('Taller') ) //=>alert(json.name)) onPress={() => this.props.navigation.navigate('Taller_detalles')}
+    .then(json  => this.props.navigation.navigate('Taller', {
+      user: json
+    }) ) //=>alert(json.name)) onPress={() => this.props.navigation.navigate('Taller_detalles')}
     .catch(error => alert("Los datos ingresados no son corretos "));
   }
 
@@ -59,8 +68,14 @@ export default class Login extends React.Component <Props> {
       return <AppLoading />;
     }
     return (
-        <View style={styles.container}> 
+     
+        <View style={styles.container}>  
+        
+        {/* <Header style={{ backgroundColor: '#891f1f'}}></Header> */}
         <Content>
+       
+         
+        <Image style={{ height:'300px' , width:null, flex: 1}} source={require('../assets/img/logo-facena.jpg')} />
         <Form >
         
           <Item floatingLabel last  > 
@@ -97,8 +112,11 @@ export default class Login extends React.Component <Props> {
             </Item> */}
               <Text>  </Text>
 
-            <Button  block style={styles.button} 
-            onPress= {this.login}>
+            {/* <Button  block style={styles.button} 
+            onPress= {this.login}> */}
+              <Button  block style={styles.button} 
+             onPress={() => this.props.navigation.navigate('Taller')}>
+              
                 <Text>Aceptar</Text>
             </Button>
             </Form>
@@ -114,7 +132,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,  
     justifyContent: 'center',  
-    marginTop: 50,
+    // marginTop: 50,
       padding: 40,
      backgroundColor: '#fff',
     //  alignItems: 'center',

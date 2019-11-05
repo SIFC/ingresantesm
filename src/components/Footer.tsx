@@ -4,15 +4,13 @@ interface Props {
   navigation: any
 }
 export default class  FooterIconExample extends Component <Props>{
-  static navigationOptions = {
-    title: 'Home'
-   };
+  
   render() {
     return (
     
       
       
-        <Footer>
+        <Footer style={{ backgroundColor: "#891f1f", color: "#ffff" }}>
           <FooterTab>
             <Button vertical onPress={() => this.props.navigation.navigate('Login')}>
               <Icon name="apps" />

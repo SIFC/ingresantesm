@@ -32,13 +32,18 @@ interface Props {
 }
 export default class Taller extends Component <Props>{
   static navigationOptions = {
-    title: 'Talleres'
+    title: 'Talleres',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#891f1f',
+    },
+    // headerTitle: () => <Header />,
    };
   render() {
     return (
       <Container>
-        <Content>
-          <Separator bordered>
+        
+          <Separator >
             <H1>Carrera 1</H1>
           </Separator>
           <ListItem>
@@ -51,7 +56,7 @@ export default class Taller extends Component <Props>{
             <Text>Taller 2</Text>
           </Button>
           </ListItem>
-          <Separator bordered >
+          <Separator  >
           <H1>Carrera 2</H1>
           </Separator>
           <ListItem>
@@ -64,9 +69,7 @@ export default class Taller extends Component <Props>{
             <Text>Taller 2</Text>
           </Button>
           </ListItem>
-         
-        </Content>
-       
+        <Footer></Footer>
      </Container>
     );
   }

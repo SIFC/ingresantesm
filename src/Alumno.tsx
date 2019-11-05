@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { Container, Header, Content, List, ListItem, Text } from 'native-base';
 export default class Alumno extends Component {
   static navigationOptions = {
-    title: 'Alumnos'
+    title: 'Alumnos',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#891f1f',
+    },
    };
   render() {
     return (
@@ -20,7 +24,7 @@ export default class Alumno extends Component {
               <Text>B</Text>
             </ListItem>  
                 <ListItem>
-                  <Text>Birra</Text>
+                  <Text>Benites</Text>
                 </ListItem>
 
             <ListItem itemDivider>

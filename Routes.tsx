@@ -10,15 +10,19 @@ const Project= createStackNavigator({
   // Home: {
   //   screen: Home
   //  },
+
   Login: {
     screen: Login
    },
+
   Taller: {
     screen: Taller
    },
+
    Taller_detalles: {
     screen: Taller_detalles
    },
+
    Alumno: {
     screen: Alumno
    }
