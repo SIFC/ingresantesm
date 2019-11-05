@@ -3,7 +3,10 @@ import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text } fro
 interface Props {
   navigation: any
 }
-export default class FooterT extends Component <Props>{
+export default class  FooterIconExample extends Component <Props>{
+  static navigationOptions = {
+    title: 'Home'
+   };
   render() {
     return (
     
@@ -11,7 +14,7 @@ export default class FooterT extends Component <Props>{
       
         <Footer>
           <FooterTab>
-            <Button vertical onPress={() => this.props.navigation.navigate('Talleres')}>
+            <Button vertical onPress={() => this.props.navigation.navigate('Login')}>
               <Icon name="apps" />
               <Text>Talleres</Text>
             </Button>

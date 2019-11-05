@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { Container, Header, Content, Card, CardItem, Text, Body, Button } from "native-base";
-export default class Taller_detalles extends Component {
+interface Props {
+  navigation: any
+}
+export default class Taller_detalles extends Component <Props>{
+  static navigationOptions = {
+    title: 'Talleres_detalles'
+   };
   render() {
     return (
         <Content padder>
@@ -19,7 +25,7 @@ export default class Taller_detalles extends Component {
             </CardItem>
             <CardItem footer bordered>
                 
-                  <Button vertical rounded light>
+                  <Button vertical rounded light onPress={() => this.props.navigation.navigate('Alumno')}>
                     <Text>Alumnos</Text>
                   </Button>
                   

@@ -27,15 +27,22 @@ import React, { Component } from 'react';
 import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, } from 'native-base';
 import Footer from './components/Footer'
 import Header from './components/Header'
-export default class Taller extends Component {
+interface Props {
+  navigation: any
+}
+export default class Taller extends Component <Props>{
+  static navigationOptions = {
+    title: 'Talleres'
+   };
   render() {
     return (
+      <Container>
         <Content>
           <Separator bordered>
             <H1>Carrera 1</H1>
           </Separator>
           <ListItem>
-          <Button rounded light onPress={() => alert("Talleres 1")}>
+          <Button rounded light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
             <Text>Taller 1</Text>
           </Button>
           </ListItem>
@@ -57,9 +64,10 @@ export default class Taller extends Component {
             <Text>Taller 2</Text>
           </Button>
           </ListItem>
-          
+         
         </Content>
-     
+       
+     </Container>
     );
   }
 }

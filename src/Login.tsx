@@ -50,7 +50,7 @@ export default class Login extends React.Component <Props> {
       method: 'POST',
       body:formData,
   }).then((response) => response.json())
-    .then(json  => alert(json.name) ) //=>alert(json.name))
+    .then(json  => this.props.navigation.navigate('Taller') ) //=>alert(json.name)) onPress={() => this.props.navigation.navigate('Taller_detalles')}
     .catch(error => alert("Los datos ingresados no son corretos "));
   }
 

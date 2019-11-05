@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, List, ListItem, Text } from 'native-base';
 export default class Alumno extends Component {
+  static navigationOptions = {
+    title: 'Alumnos'
+   };
   render() {
     return (
         <Content>
