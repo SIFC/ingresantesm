@@ -7,6 +7,7 @@ import {} from './components/Header'
 import { Ionicons } from '@expo/vector-icons';
 import { ActionHome } from 'material-ui/svg-icons';
 import { createStackNavigator } from 'react-navigation-stack';
+import { any } from 'prop-types';
 
 interface Props {
   navigation: any
@@ -31,8 +32,9 @@ export default class Login extends React.Component <Props> {
       dni:"36112457",
       // n_inscripcion:false,
       spinner:false,
-      server:"http://192.168.0.7/App-Laravel/ingresantesw/public",
-
+      datosGenerales:any,
+      // server:"http://192.168.0.7/App-Laravel/ingresantesw/public",
+      server:"http://ingresantes.sambrana.com.ar:8100",
       error:false
     };
   }
@@ -56,11 +58,15 @@ export default class Login extends React.Component <Props> {
    let response = await fetch(this.state.server+'/api/login', {
       method: 'POST',
       body:formData,
-  }).then((response) => response.json())
-    .then(json  => this.props.navigation.navigate('Taller', {
-      user: json
-    }) ) //=>alert(json.name)) onPress={() => this.props.navigation.navigate('Taller_detalles')}
-    .catch(error => alert("Los datos ingresados no son corretos "));
+  }
+  ).then((response) => response.json())
+    .then(json  => {
+      this.setState({datosGenerales:json})
+      this.props.navigation.navigate('Taller', {datosGenerales: this.state.datosGenerales}) //{datosGenerales: this.state.datosGenerales}
+      console.log(this.state.datosGenerales)
+    }) //=>alert(json.name)) onPress={() => this.props.navigation.navigate('Taller_detalles')}
+    .catch(error => alert(error)
+    );// 
   }
 
   render() { 
@@ -112,10 +118,10 @@ export default class Login extends React.Component <Props> {
             </Item> */}
               <Text>  </Text>
 
-            {/* <Button  block style={styles.button} 
-            onPress= {this.login}> */}
-              <Button  block style={styles.button} 
-             onPress={() => this.props.navigation.navigate('Taller')}>
+            <Button  block style={styles.button} 
+            onPress= {this.login}>
+              {/* <Button  block style={styles.button} 
+             onPress={() => this.props.navigation.navigate('Taller')}> */}
               
                 <Text>Aceptar</Text>
             </Button>

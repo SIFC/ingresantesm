@@ -30,7 +30,9 @@ import Header from './components/Header'
 interface Props {
   navigation: any
 }
+
 export default class Taller extends Component <Props>{
+ 
   static navigationOptions = {
     title: 'Talleres',
     headerTintColor: '#fff',
@@ -39,16 +41,21 @@ export default class Taller extends Component <Props>{
     },
     // headerTitle: () => <Header />,
    };
+
   render() {
+    // const { params } = this.props.navigation.state;
+     const { navigation } = this.props;
+     const datosGenerales = navigation.getParam('datosGenerales');
     return (
       <Container>
         
           <Separator >
+          
             <H1>Carrera 1</H1>
           </Separator>
           <ListItem>
           <Button rounded light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
-            <Text>Taller 1</Text>
+            <Text>  {datosGenerales.name}</Text>
           </Button>
           </ListItem>
           <ListItem last>
