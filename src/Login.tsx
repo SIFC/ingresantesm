@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, SafeAreaView, TextInput, Image } from 'react-native';
+import { StyleSheet, View, SafeAreaView, TextInput,Image  } from 'react-native';
 import { Container, Header, Content, Form, Item, Input, Label, Text, Separator , Button, CardItem} from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
@@ -14,11 +14,14 @@ interface Props {
 }
 export default class Login extends React.Component <Props> {
   static navigationOptions = {
-    title: 'Login',
+    title: 'INGRESO 2020',
     headerTintColor: '#fff',
     headerStyle: {
       backgroundColor: '#891f1f',
     },
+    headerTitleContainerStyle:{
+      textAlign:'center'}
+    
     // style:  '#891f1f'
    };
   state;
@@ -76,12 +79,12 @@ export default class Login extends React.Component <Props> {
     return (
      
         <View style={styles.container}>  
-        
+      
         {/* <Header style={{ backgroundColor: '#891f1f'}}></Header> */}
         <Content>
        
-         
-        <Image style={{ height:'300px' , width:null, flex: 1}} source={require('../assets/img/logo-facena.jpg')} />
+         <View style={styles.container}>
+        <Image style={styles.logo} source={require('../assets/img/logo-facena.jpg')} /></View>
         <Form >
         
           <Item floatingLabel last  > 
@@ -137,6 +140,8 @@ export default class Login extends React.Component <Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,  
+ 
+  alignItems: 'center',
     justifyContent: 'center',  
     // marginTop: 50,
       padding: 40,
@@ -163,5 +168,11 @@ button: {
   marginBottom: 30,
   width: 200,
   alignItems: 'center'
+},
+
+logo: {
+  
+  width: 100,
+  height: 100,
 },
 });
