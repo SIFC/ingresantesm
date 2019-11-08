@@ -48,35 +48,37 @@ export default class Taller extends Component <Props>{
      const datosGenerales = navigation.getParam('datosGenerales');
     return (
       <Container>
-        
-          <Separator >
+          {/* itemDivider */}
+          {/* <Separator bordered>
+            <Text>MIDFIELD</Text>
+          </Separator> */}
           
-            <H1>Carrera 1</H1>
-          </Separator>
-          <ListItem>
-          <Button rounded light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
-            <Text>  {datosGenerales.name}</Text>
-          </Button>
-          </ListItem>
           <ListItem last>
-          <Button rounded light onPress={() => alert("Talleres 2")}>
-            <Text>Taller 2</Text>
-          </Button>
+              <Button rounded light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
+                <Text>  {datosGenerales.name}</Text>
+              </Button>
           </ListItem>
-          <Separator  >
-          <H1>Carrera 2</H1>
-          </Separator>
-          <ListItem>
-          <Button rounded light onPress={() => alert("Talleres 1")}>
-            <Text>Taller 1</Text>
-          </Button>
-          </ListItem>
+          
           <ListItem last>
-          <Button rounded light onPress={() => alert("Talleres 2")}>
-            <Text>Taller 2</Text>
-          </Button>
+              <Button rounded light onPress={() => alert("Talleres 2")}>
+                <Text>Taller 2</Text>
+              </Button>
+          </ListItem>   
+                         
+          <ListItem last>
+              <Button rounded light onPress={() => alert("Talleres 1")}>
+                <Text>Taller 1</Text>
+              </Button>
           </ListItem>
+         
+          <ListItem last>
+              <Button rounded light onPress={() => alert("Talleres 2")}>
+                <Text>Taller 2</Text>
+              </Button>
+          </ListItem>
+
         <Footer></Footer>
+
      </Container>
     );
   }
