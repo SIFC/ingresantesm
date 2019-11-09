@@ -24,12 +24,16 @@
 // ---------------------------------------------------------------------
 
 import React, { Component } from 'react';
-import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, Left, Right, Icon, } from 'native-base';
+import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, Left, Right, Icon,Accordion  } from 'native-base';
 import Footer from './components/Footer'
 import Header from './components/Header'
+import Taller_detalles from './Taller_detalles';
+import Home from './Home';
+import RenderToLayer from 'material-ui/internal/RenderToLayer';
 interface Props {
   navigation: any
 }
+
 
 export default class Taller extends Component <Props>{
  
@@ -46,7 +50,7 @@ export default class Taller extends Component <Props>{
     // const { params } = this.props.navigation.state;
      const { navigation } = this.props;
      const datosGenerales = navigation.getParam('datosGenerales');
-
+     
     return (
       <Container>
           {/* itemDivider */}
@@ -55,26 +59,38 @@ export default class Taller extends Component <Props>{
           </Separator> */}
           <List  dataArray={datosGenerales.talleres}
               renderRow={(item) =>
-              <ListItem  last  onPress={() => this.props.navigation.navigate('Taller_detalles')} >
-                {/* <Button rounded light > */}
-                <Left>
-                <Text>  {item.titulo}</Text></Left>
-              {/* </Button> */}
-               <Right>
-                 <Icon name="arrow-forward"></Icon>
-               </Right>
-              </ListItem>}>
+            
+              // <ListItem  last  onPress={() => this.props.navigation.navigate('Taller_detalles')} >
+              //   {/* <Button rounded light > */}
+              //   <Left>
+              //   <Text>  {item.titulo}</Text></Left>
+              // {/* </Button> */}
+              //  <Right>
+              //    <Icon name="arrow-forward"></Icon>
+              //  </Right>
+              //  <Accordion dataArray={[{ title:item.titulo, content:item  }]}/>
+              // </ListItem>
 
-          {/* <ListItem last>
-              <Button rounded light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
-                <Text>  {datosGenerales.talleres.titulo}</Text>
-              </Button>
-          </ListItem> */}
-          </List>
+              <Content padder>
+                <Accordion dataArray={[{ title:item.titulo, content: item.aula }]}/>
+               
+            <Button  light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
+               <Text>  {item.titulo}</Text>
+            </Button>
          
-        <Footer></Footer>
+             </Content>    
+          //            
+            }>
+
+         
+          </List>
+
+        
+         
+        {/* <Footer></Footer> */}
 
      </Container>
     );
   }
 }
+

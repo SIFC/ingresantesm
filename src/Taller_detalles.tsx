@@ -43,3 +43,5 @@ export default class Taller_detalles extends Component <Props>{
     );
   }
 }
+
+
