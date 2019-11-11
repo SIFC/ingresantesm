@@ -24,7 +24,7 @@
 // ---------------------------------------------------------------------
 
 import React, { Component } from 'react';
-import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, Left, Right, Icon,Accordion  } from 'native-base';
+import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, Left, Right, Icon,Accordion, View  } from 'native-base';
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Taller_detalles from './Taller_detalles';
@@ -46,21 +46,36 @@ export default class Taller extends Component <Props>{
     },
     // headerTitle: () => <Header />,
    };
+  
+  
+   
+   _renderHeader(dataArray) {
+        return (
+          <View
+          style={{ flexDirection: "row", padding: 10, justifyContent: "space-between", alignItems: "center", backgroundColor: "#A9DAD6" }}
+        >
+            <Text style={{ fontWeight: "600" }}>
+             {dataArray.title}
+            </Text>
+            </View>
+         
+        );
+      }
+      _renderContent(dataArray) {
+        return (
+          <Text style={{ backgroundColor: "#e3f1f1", padding: 10, fontStyle: "italic" }} >
+            {dataArray.content}
+            <Taller_detalles></Taller_detalles>
+          </Text>
+        );
+      }
 
-   _renderContent(content) {
-    return (
-      <Text
-        style={{ backgroundColor: "#e3f1f1", padding: 10, fontStyle: "italic" }}
-      >
-        {content}
-      </Text>
-    );
-  }
+   
 
   render() {
     // const { params } = this.props.navigation.state;
-     
-     
+    const { navigation } = this.props;
+    const datosGenerales = navigation.getParam('datosGenerales');
     return (
       
       <Container>
@@ -83,12 +98,13 @@ export default class Taller extends Component <Props>{
               // </ListItem>
 
               <Content padder>
-                <Accordion dataArray={[{ title:item.titulo, content: item.aula }]}
-                  renderContent={this._renderContent}/>
-                  {/*                     
-                  <Button  light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
-                    <Text>  {item.titulo}</Text>
-                  </Button> */}
+                <Accordion dataArray={[{ title:item.titulo, content: item.talleres }]}
+                renderHeader={this._renderHeader}
+                renderContent={this._renderContent}/>
+               
+            {/* <Button  light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
+               <Text>  {item.titulo}</Text>
+            </Button> */}
          
              </Content>    
 
@@ -108,3 +124,47 @@ export default class Taller extends Component <Props>{
   }
 }
 
+// *******************************************************
+
+// import React, { Component } from "react";
+// import { Container, Header, Content, Accordion, View, Text, Icon, Button } from "native-base";
+// const dataArray = [
+//   { title: "First Element", content: "Lorem ipsum dolor sit amet" },
+//   { title: "Second Element", content: "Lorem ipsum dolor sit amet" },
+//   { title: "Third Element", content: "Lorem ipsum dolor sit amet" }
+// ];
+// export default class AccordionCustomHeaderContentExample extends Component {
+//   _renderHeader(dataArray) {
+//     return (
+    
+//         <Text >
+//          {dataArray.title}
+//         </Text>
+     
+//     );
+//   }
+//   _renderContent(dataArray) {
+//     return (
+//       <Text>
+//         {dataArray.content}
+//         <Button  >
+//                <Text>  boton</Text>
+//           </Button>
+//       </Text>
+//     );
+//   }
+//   render() {
+//     return (
+//       <Container>
+       
+//         <Content padder>
+//           <Accordion
+//             dataArray={dataArray}
+//               renderHeader={this._renderHeader}
+//              renderContent={this._renderContent}
+//           />
+//         </Content>
+//       </Container>
+//     );
+//   }
+// }
