@@ -33,7 +33,8 @@ import RenderToLayer from 'material-ui/internal/RenderToLayer';
 interface Props {
   navigation: any
 }
-
+const { navigation } = this.props;
+const datosGenerales = navigation.getParam('datosGenerales');
 
 export default class Taller extends Component <Props>{
  
@@ -46,12 +47,22 @@ export default class Taller extends Component <Props>{
     // headerTitle: () => <Header />,
    };
 
+   _renderContent(content) {
+    return (
+      <Text
+        style={{ backgroundColor: "#e3f1f1", padding: 10, fontStyle: "italic" }}
+      >
+        {content}
+      </Text>
+    );
+  }
+
   render() {
     // const { params } = this.props.navigation.state;
-     const { navigation } = this.props;
-     const datosGenerales = navigation.getParam('datosGenerales');
+     
      
     return (
+      
       <Container>
           {/* itemDivider */}
           {/* <Separator bordered>
@@ -72,15 +83,18 @@ export default class Taller extends Component <Props>{
               // </ListItem>
 
               <Content padder>
-                <Accordion dataArray={[{ title:item.titulo, content: item.aula }]}/>
-               
-            <Button  light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
-               <Text>  {item.titulo}</Text>
-            </Button>
+                <Accordion dataArray={[{ title:item.titulo, content: item.aula }]}
+                  renderContent={this._renderContent}/>
+                  {/*                     
+                  <Button  light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
+                    <Text>  {item.titulo}</Text>
+                  </Button> */}
          
              </Content>    
-          //            
+
+                
             }>
+              
 
          
           </List>
