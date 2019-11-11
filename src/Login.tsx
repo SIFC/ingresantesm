@@ -156,14 +156,14 @@ const styles = StyleSheet.create({
 //     margin: 10,  
 //     fontWeight: "bold"  
 // },  
-TextInputStyle: {  
-    textAlign: 'center',  
-    height: 40,  
-    borderRadius: 10,  
-    borderWidth: 2,  
-    borderColor: '#009688',  
-    marginBottom: 10  
-},
+// TextInputStyle: {  
+//     textAlign: 'center',  
+//     height: 40,  
+//     borderRadius: 10,  
+//     borderWidth: 2,  
+//     borderColor: '#009688',  
+//     marginBottom: 10  
+// },
 button: {
   marginBottom: 30,
   width: 200,
