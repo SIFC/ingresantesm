@@ -85,7 +85,7 @@ export default class Taller extends Component <Props>{
               </Text>
               <Text>
               <Text>Horarios:</Text>
-                <Button  danger onPress={() => this.props.navigation.navigate('Alumno')} >
+                <Button transparent  onPress={() => this.props.navigation.navigate('Alumno')} >
                   <Icon name="calendar" ></Icon>
                 </Button>
               </Text>
