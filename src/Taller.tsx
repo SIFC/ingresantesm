@@ -24,17 +24,17 @@
 // ---------------------------------------------------------------------
 
 import React, { Component } from 'react';
-import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, Left, Right, Icon,Accordion, View  } from 'native-base';
+import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, Left, Right, Icon,Accordion, View, CardItem, Card, Body } from 'native-base';
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Taller_detalles from './Taller_detalles';
 import Home from './Home';
 import RenderToLayer from 'material-ui/internal/RenderToLayer';
+// import React from 'react';
 interface Props {
   navigation: any
 }
-const { navigation } = this.props;
-const datosGenerales = navigation.getParam('datosGenerales');
+
 
 export default class Taller extends Component <Props>{
  
@@ -49,28 +49,63 @@ export default class Taller extends Component <Props>{
   
   
    
-   _renderHeader(dataArray) {
-        return (
-          <View
-          style={{ flexDirection: "row", padding: 10, justifyContent: "space-between", alignItems: "center", backgroundColor: "#A9DAD6" }}
-        >
-            <Text style={{ fontWeight: "600" }}>
-             {dataArray.title}
-            </Text>
-            </View>
-         
-        );
-      }
-      _renderContent(dataArray) {
-        return (
-          <Text style={{ backgroundColor: "#e3f1f1", padding: 10, fontStyle: "italic" }} >
-            {dataArray.content}
-            <Taller_detalles></Taller_detalles>
-          </Text>
-        );
-      }
-
-   
+   _renderHeader(item, expanded) {
+    return (
+      <View style={{
+        flexDirection: "row",
+        padding: 10,
+        justifyContent: "space-between",
+        alignItems: "center" ,
+        backgroundColor: "#891f1f"}}>
+      <Text style={{ fontWeight: "600", color:"#fff" }}>
+          {" "}{item.title}
+        </Text>
+        {expanded 
+          ? <Icon style={{ fontSize: 18, color:"#fff" }} name="remove" />
+          : <Icon style={{ fontSize: 18, color:"#fff"}} name="add" />}
+      </View>
+    );
+  }
+  _renderContent(item) {
+    console.log(item.content)
+    console.log(item.content.horarios)
+    return (
+      <Content padder>
+      <Card>
+        <CardItem  bordered>
+            <Body>
+          <Text>{" "}Aula: {item.content.aula} {" "} en {item.content.ubicacion} </Text>
+          <Text> {" "} Duración: {item.content.duracion} hs</Text>
+            </Body>
+        </CardItem>
+        <CardItem >
+            <Body>
+              <Text>
+               Contenido:
+              </Text>
+              <Text>
+              <Text>Horarios:</Text>
+                <Button  danger onPress={() => this.props.navigation.navigate('Alumno')} >
+                  <Icon name="calendar" ></Icon>
+                </Button>
+              </Text>
+            </Body>
+        </CardItem>
+        <CardItem footer bordered>
+            
+              <Button vertical rounded light onPress={() => this.props.navigation.navigate('Alumno')}>
+                <Text>Alumnos</Text>
+              </Button>
+              
+              <Button vertical rounded light onPress={() =>alert("Abrir Camara leer Qr")}>
+                <Text>Marcar Presente</Text>
+              </Button>
+              
+        </CardItem>
+      </Card>
+    </Content>
+    );
+  }
 
   render() {
     // const { params } = this.props.navigation.state;
@@ -97,10 +132,11 @@ export default class Taller extends Component <Props>{
               //  <Accordion dataArray={[{ title:item.titulo, content:item  }]}/>
               // </ListItem>
 
-              <Content padder>
-                <Accordion dataArray={[{ title:item.titulo, content: item.talleres }]}
-                renderHeader={this._renderHeader}
-                renderContent={this._renderContent}/>
+              <Content padder  style={{ backgroundColor: "white" }}>
+                <Accordion dataArray={[{ title:item.titulo, content: item }]}
+                 renderHeader={this._renderHeader}
+                 renderContent={this._renderContent}
+                />
                
             {/* <Button  light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
                <Text>  {item.titulo}</Text>
