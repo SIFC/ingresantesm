@@ -23,13 +23,14 @@
 // });
 // ---------------------------------------------------------------------
 
-import React, { Component } from 'react';
-import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, Left, Right, Icon,Accordion, View, CardItem, Card, Body } from 'native-base';
+import React, { Component} from 'react';
+import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, Left, Right, Icon,Accordion, CardItem, Card, Body } from 'native-base';
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Taller_detalles from './Taller_detalles';
 import Home from './Home';
 import RenderToLayer from 'material-ui/internal/RenderToLayer';
+import { View } from 'react-native';
 // import React from 'react';
 interface Props {
   navigation: any
@@ -70,25 +71,30 @@ export default class Taller extends Component <Props>{
     console.log(item.content)
     console.log(item.content.horarios)
     return (
+      
       <Content padder>
       <Card>
         <CardItem  bordered>
             <Body>
+              <View>
           <Text>{" "}Aula: {item.content.aula} {" "} en {item.content.ubicacion} </Text>
           <Text> {" "} Duración: {item.content.duracion} hs</Text>
-            </Body>
+          </View> 
+          </Body>
         </CardItem>
         <CardItem >
             <Body>
+            <View>
               <Text>
                Contenido:
               </Text>
-              <Text>
+              
               <Text>Horarios:</Text>
                 <Button transparent   >
                   <Icon name="calendar" ></Icon>
                 </Button>
-              </Text>
+             
+              </View>
             </Body>
         </CardItem>
         <CardItem footer bordered>
