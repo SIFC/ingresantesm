@@ -6,6 +6,7 @@ import Taller from "./src/Taller";
 import Login from "./src/Login";
 import Taller_detalles from "./src/Taller_detalles";
 import Alumno from "./src/Alumno";
+import Lector_Qr from "./src/Lector_Qr";
 const Project= createStackNavigator({
   // Home: {
   //   screen: Home
@@ -25,7 +26,12 @@ const Project= createStackNavigator({
 
    Alumno: {
     screen: Alumno
+   },
+
+   Lector_Qr:{
+     screen: Lector_Qr
    }
+
   
   });
 export default createAppContainer(Project);

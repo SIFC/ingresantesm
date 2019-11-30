@@ -8,9 +8,9 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 interface Props {
   navigation: any
 }
-export default class Taller_detalles extends Component <Props>{
+export default class Lector_Qr extends Component <Props>{
   static navigationOptions = {
-    title: 'Talleres_detalles',
+    title: 'Lector_Qr',
     headerTintColor: '#fff',
     headerStyle: {
       backgroundColor: '#891f1f',
@@ -53,37 +53,10 @@ export default class Taller_detalles extends Component <Props>{
       />
 
       {scanned && (
-        <Button title={'Tap to Scan Again'} onPress={() => this.setState({ scanned: false })} />
+        <Button title={'Volver a Scanear QR'} onPress={() => this.setState({ scanned: false })} />
       )}
     </View>
-        // <Content padder>
-          
-        //   {/* <Card>
-        //     <CardItem  bordered>
-        //         <Body>
-        //           <Text>Taller 1 </Text>
-        //         </Body>
-        //     </CardItem>
-        //     <CardItem bordered>
-        //         <Body>
-        //           <Text>
-        //             descripciones
-        //           </Text>
-        //         </Body>
-        //     </CardItem>
-        //     <CardItem footer bordered>
-                
-        //           <Button vertical rounded light onPress={() => this.props.navigation.navigate('Alumno')}>
-        //             <Text>Alumnos</Text>
-        //           </Button>
-                  
-        //           <Button vertical rounded light>
-        //             <Text>Marcar Presente</Text>
-        //           </Button>
-                  
-        //     </CardItem>
-        //   </Card> */}
-        // </Content>
+    
     );
   }
   handleBarCodeScanned = ({ type, data }) => {
