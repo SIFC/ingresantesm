@@ -116,7 +116,7 @@ export default class Taller extends Component <Props>{
       </View>
     );
   }
-  _renderContent(item) {
+  _renderContent =(item) =>{
 
     
     
