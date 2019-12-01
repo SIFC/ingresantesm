@@ -20,6 +20,8 @@ export default class Lector_Qr extends Component <Props>{
    state = {
     hasCameraPermission: null,
     scanned: false,
+    server:"http://ingresantes.sambrana.com.ar:8100",
+    error:false
   };
 
   async componentDidMount() {
@@ -59,9 +61,51 @@ export default class Lector_Qr extends Component <Props>{
     
     );
   }
+
+  // datosSacann = async () => {
+  //   // alert('logueate pue');
+  //   let formData = new FormData();
+  //   formData.append('lu', this.state.lu)
+  //   formData.append('dni', this.state.dni)
+
+  //  let response = await fetch(this.state.server+'/api/presente', {
+  //     method: 'POST',
+  //     body:formData,
+  // }
+  // ).then((response) => response.json())
+  //   .then(json  => {
+  //     this.setState({datosGenerales:json})
+  //     this.props.navigation.navigate('Taller', {datosGenerales: this.state.datosGenerales}) //{datosGenerales: this.state.datosGenerales}
+  //     console.log(this.state.datosGenerales)
+  //   }) //=>alert(json.name)) onPress={() => this.props.navigation.navigate('Taller_detalles')}
+  //   .catch(error => alert(error)
+  //   );// 
+  // }
+
   handleBarCodeScanned = ({ type, data }) => {
     this.setState({ scanned: true });
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+  
+   
+
+  fetch(this.state.server+'/api/presente', {
+      method: 'POST',
+      // headers: {
+      //    user_id:1,
+      //    qr:data,
+      //    fecha:Date.now()}
+      
+  }
+  ).then((response) => response.json())
+    .then(json  =>alert(json.name)) 
+    // {
+    //   // this.setState({datosGenerales:json})
+    //   this.props.navigation.navigate('Taller') //{datosGenerales: this.state.datosGenerales}
+    //    console.log(json)
+    // }) //=>alert(json.name)) onPress={() => this.props.navigation.navigate('Taller_detalles')}
+    .catch(error => alert('no anda')
+    );// 
+
   };
 }
 

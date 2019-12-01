@@ -56,9 +56,7 @@ export default class Taller extends Component <Props>{
     return (
       
       <Container>
-         <Button vertical rounded light onPress={() =>this.props.navigation.navigate('Lector_Qr')}>
-                <Text>Marcar Presente</Text>
-              </Button>
+        
           {/* itemDivider */}
           {/* <Separator bordered>
             <Text>MIDFIELD</Text>
