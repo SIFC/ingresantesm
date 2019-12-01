@@ -20,14 +20,14 @@ export default class Lector_Qr extends Component <Props>{
    state = {
     hasCameraPermission: null,
     scanned: false,
-     
-    server:"http://ingresantes.sambrana.com.ar:8100",
+    // server:"http://192.168.0.7/App-Laravel/ingresantesw/public",
+     server:"http://ingresantes.sambrana.com.ar:8100",
     error:false
   };
   datos = {
     user_id:"1",
     qr:'',
-    fecha:'',
+    fecha: Date.now().toString(),
 }
 
   async componentDidMount() {
@@ -90,15 +90,15 @@ export default class Lector_Qr extends Component <Props>{
 
   handleBarCodeScanned = ({ type, data }) => {
     this.setState({ scanned: true });
-    // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    //  alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   
   
    let formData = new FormData();
    formData.append('user_id', this.datos.user_id )
    formData.append('qr', data)
-   formData.append('fecha', Date.now().toString())
+   formData.append('fecha', '1580731200000')
 
-  fetch(this.state.server +'/api/presente', {
+  fetch( this.state.server +'/api/presente', {
       method: 'POST',
       body: formData
       
@@ -106,8 +106,9 @@ export default class Lector_Qr extends Component <Props>{
   ).then( (response) =>  { 
     this.props.navigation.navigate('Taller') 
     console.log(response)
+    alert(response)
     }) // onPress={() => this.props.navigation.navigate('Taller')}
-    .catch(error => alert('no anda')
+    .catch(error => alert('no anda'+ data)
     );// 
 
   };
