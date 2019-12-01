@@ -20,9 +20,15 @@ export default class Lector_Qr extends Component <Props>{
    state = {
     hasCameraPermission: null,
     scanned: false,
+     
     server:"http://ingresantes.sambrana.com.ar:8100",
     error:false
   };
+  datos = {
+    user_id:"1",
+    qr:'',
+    fecha:Date.now(),
+}
 
   async componentDidMount() {
     this.getPermissionsAsync();
@@ -86,23 +92,23 @@ export default class Lector_Qr extends Component <Props>{
     this.setState({ scanned: true });
     // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   
-   
+  
+   let formData = new FormData();
+   formData.append('user_id', this.datos.user_id )
+   formData.append('qr', data)
+   formData.append('fecha', this.datos.fecha.toString())
 
   fetch(this.state.server+'/api/presente', {
       method: 'POST',
-      // headers: {
-      //    user_id:1,
-      //    qr:data,
-      //    fecha:Date.now()}
+      body: formData
       
   }
   ).then((response) => response.json())
-    .then(json  =>alert(json.name)) 
-    // {
-    //   // this.setState({datosGenerales:json})
-    //   this.props.navigation.navigate('Taller') //{datosGenerales: this.state.datosGenerales}
-    //    console.log(json)
-    // }) //=>alert(json.name)) onPress={() => this.props.navigation.navigate('Taller_detalles')}
+    .then(json  => {
+      // this.setState({datosGenerales:json})
+      this.props.navigation.navigate('Taller') //{datosGenerales: this.state.datosGenerales}
+       console.log(json)
+    }) //=>alert(json.name)) onPress={() => this.props.navigation.navigate('Taller_detalles')}
     .catch(error => alert('no anda')
     );// 
 
