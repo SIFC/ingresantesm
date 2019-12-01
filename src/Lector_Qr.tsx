@@ -27,7 +27,7 @@ export default class Lector_Qr extends Component <Props>{
   datos = {
     user_id:"1",
     qr:'',
-    fecha:Date.now(),
+    fecha:'',
 }
 
   async componentDidMount() {
@@ -96,19 +96,17 @@ export default class Lector_Qr extends Component <Props>{
    let formData = new FormData();
    formData.append('user_id', this.datos.user_id )
    formData.append('qr', data)
-   formData.append('fecha', this.datos.fecha.toString())
+   formData.append('fecha', Date.now().toString())
 
-  fetch(this.state.server+'/api/presente', {
+  fetch(this.state.server +'/api/presente', {
       method: 'POST',
       body: formData
       
   }
-  ).then((response) => response.json())
-    .then(json  => {
-      // this.setState({datosGenerales:json})
-      this.props.navigation.navigate('Taller') //{datosGenerales: this.state.datosGenerales}
-       console.log(json)
-    }) //=>alert(json.name)) onPress={() => this.props.navigation.navigate('Taller_detalles')}
+  ).then( (response) =>  { 
+    this.props.navigation.navigate('Taller') 
+    console.log(response)
+    }) // onPress={() => this.props.navigation.navigate('Taller')}
     .catch(error => alert('no anda')
     );// 
 
