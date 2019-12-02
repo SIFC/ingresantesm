@@ -62,12 +62,21 @@ export default class Login extends React.Component <Props> {
       method: 'POST',
       body:formData,
   }
-  ).then((response) => response.json())
-    .then(json  => {
-      this.setState({datosGenerales:json})
-      this.props.navigation.navigate('Taller', {datosGenerales: this.state.datosGenerales}) //{datosGenerales: this.state.datosGenerales}
+  ).then( async (response) => {
+    console.log(response.status);
+    if(response.status == 200)
+    {
+      let json = await response.json();
+      this.setState({ datosGenerales: json })
+      this.props.navigation.navigate('Taller', { datosGenerales: this.state.datosGenerales }) //{datosGenerales: this.state.datosGenerales}
       console.log(this.state.datosGenerales)
-    }) //=>alert(json.name)) onPress={() => this.props.navigation.navigate('Taller_detalles')}
+    }
+    else
+    {
+      alert("DNI o LU Incorrectos")
+    }
+    
+  })
     .catch(error => alert(error)
     );// 
   }
