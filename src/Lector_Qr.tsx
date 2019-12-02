@@ -103,12 +103,13 @@ export default class Lector_Qr extends Component <Props>{
       body: formData
       
   }
-  ).then( (response) =>  { 
-    this.props.navigation.navigate('Taller') 
-    console.log(response)
-    alert(response)
+  ).then( (response) => response.text())
+    .then(text => { 
+      console.log(text)
+      alert(text)//aca puede venir presente 
+      this.props.navigation.navigate('Taller') 
     }) // onPress={() => this.props.navigation.navigate('Taller')}
-    .catch(error => alert('no anda'+ data)
+    .catch(error => alert(error)
     );// 
 
   };
