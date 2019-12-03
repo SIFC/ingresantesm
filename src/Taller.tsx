@@ -52,7 +52,7 @@ export default class Taller extends Component <Props>{
     // const { params } = this.props.navigation.state;
     const { navigation } = this.props;
     const datosGenerales = navigation.getParam('datosGenerales');
-    
+   console.log( datosGenerales)
     return (
       
       <Container>
@@ -116,10 +116,11 @@ export default class Taller extends Component <Props>{
   }
   _renderContent =(item) =>{
 
-    
-    
-    console.log(item.content)
-    console.log(item.content.horarios)
+   
+    // console.log(item.content)
+    // console.log(item.content.horarios)
+    console.log("id ")
+    console.log(item.content.id)
 
     return (
      
@@ -154,7 +155,8 @@ export default class Taller extends Component <Props>{
                 <Text>Alumnos</Text>
               </Button>
               
-              <Button vertical rounded light onPress={() =>this.props.navigation.navigate('Lector_Qr')}>
+              <Button vertical rounded light onPress={() =>this.props.navigation.navigate('Lector_Qr', {user_id:1})}>
+              
                 <Text>Marcar Presente</Text>
               </Button>
               

@@ -23,9 +23,10 @@ export default class Lector_Qr extends Component <Props>{
     // server:"http://192.168.0.7/App-Laravel/ingresantesw/public",
      server:"http://ingresantes.sambrana.com.ar:8100",
     error:false
+    
   };
   datos = {
-    user_id:"1",
+    user_id:"",
     qr:'',
     fecha: Date.now().toString(),
 }
@@ -40,7 +41,12 @@ export default class Lector_Qr extends Component <Props>{
   };
 
   render() {
+    const { navigation } = this.props;
+    const user_id = navigation.getParam('user_id');
     const { hasCameraPermission, scanned } = this.state;
+   
+     this.datos.user_id = user_id
+     console.log(this.datos.user_id )
 
     if (hasCameraPermission === null) {
       return <Text>Requesting for camera permission</Text>;
@@ -49,7 +55,9 @@ export default class Lector_Qr extends Component <Props>{
       return <Text>No access to camera</Text>;
     }
     return (
+     
     <View
+    
       style={{
         flex: 1,
         flexDirection: 'column',
@@ -64,8 +72,9 @@ export default class Lector_Qr extends Component <Props>{
         <Button title={'Volver a Scanear QR'} onPress={() => this.setState({ scanned: false })} />
       )}
     </View>
-    
+ 
     );
+    
   }
 
   // datosSacann = async () => {
@@ -91,13 +100,13 @@ export default class Lector_Qr extends Component <Props>{
   handleBarCodeScanned = ({ type, data }) => {
     this.setState({ scanned: true });
     //  alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-  
+
   
    let formData = new FormData();
    formData.append('user_id', this.datos.user_id )
    formData.append('qr', data)
    formData.append('fecha', '1580731200000')//
-
+   console.log(formData)
   fetch( this.state.server +'/api/presente', {
       method: 'POST',
       body: formData
