@@ -155,7 +155,7 @@ export default class Taller extends Component <Props>{
                 <Text>Alumnos</Text>
               </Button>
               
-              <Button vertical rounded light onPress={() =>this.props.navigation.navigate('Lector_Qr', {user_id:1})}>
+              <Button vertical rounded light onPress={() =>this.props.navigation.navigate('Lector_Qr', {user_id:item.content.id})}>
               
                 <Text>Marcar Presente</Text>
               </Button>
