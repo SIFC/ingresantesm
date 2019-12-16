@@ -115,12 +115,13 @@ export default class Taller extends Component <Props>{
     );
   }
   _renderContent =(item) =>{
-
+    
    
-    // console.log(item.content)
-    // console.log(item.content.horarios)
-    console.log("id ")
-    console.log(item.content.id)
+    //  console.log(item.content)
+    //  console.log("horarios ")
+    //  console.log(item.content.horarios)
+    // console.log("id ")
+    // console.log(item.content.id)
 
     return (
      
@@ -129,22 +130,47 @@ export default class Taller extends Component <Props>{
         <CardItem  bordered>
             <Body>
               <View>
-          <Text>{" "}Aula: {item.content.aula} {" "} en {item.content.ubicacion} </Text>
-          <Text> {" "} Duración: {item.content.duracion} hs</Text>
+          <Text>{" "}Aula: {item.content.aula}  en {item.content.ubicacion} </Text>
+          <Text> Duración: {item.content.duracion} hs</Text>
           </View> 
           </Body>
         </CardItem>
         <CardItem >
             <Body>
             <View>
-              <Text>
+              {/* <Text>
                Contenido:
-              </Text>
+              </Text> */}
               
-              <Text>Horarios:</Text>
-                <Button transparent   >
+              <Text> <Icon name="calendar" ></Icon> Horarios: </Text>
+              <List dataArray={item.content.horarios} renderRow={(data) =>                                 
+                <ListItem> 
+                <View>
+                    <Text>id: {data.id}</Text>
+                    <Text>día:{data.dia}</Text>
+                    <Text>taller_id:{data.taller_id}</Text>
+                    <Text>horario inicio:{data.horaInicio}</Text>
+                    <Text>horario fin:{data.horaFin}</Text>
+                    <Text>fecha taller{data.fechaTaller}</Text>
+                    </View>                  
+                </ListItem>                            
+              } />
+
+{/* <List
+            dataArray={item.content.talleres}
+            renderRow={data => {
+             
+                <ListItem
+                  >
+                  <Text>{data}</Text>
+                </ListItem>
+              
+            }}
+          /> */}
+
+                {/* <Button transparent   >
                   <Icon name="calendar" ></Icon>
-                </Button>
+                </Button> */}
              
               </View>
             </Body>
