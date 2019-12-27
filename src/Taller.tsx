@@ -55,6 +55,7 @@ export default class Taller extends Component <Props>{
       roles:any,
       alumno:false,
       profe:false,
+      horarios:any
      
     };
   }
@@ -149,10 +150,11 @@ export default class Taller extends Component <Props>{
       console.log(item.content)
      
     //  console.log("horarios ")
-    //  console.log(item.content.horarios)
+      console.log(item.content.horarios)
     // console.log("id ")
     // console.log(item.content.id)
-
+    this.state.horarios = item.content.horarios
+    console.log(this.state.horarios )
     return (
      
       <Content padder>
@@ -173,7 +175,17 @@ export default class Taller extends Component <Props>{
               </Text> */}
               
               <Text> <Icon name="calendar" ></Icon> Horarios: </Text>
-              <List dataArray={item.content.horarios} renderRow={(data) =>                                 
+              {this.state.horarios.forEach(data => {
+                // console.log(data)
+                 
+                
+                    <Text>id: {data.id}</Text>
+                   
+                  
+                 
+              })
+            }
+              {/* <List dataArray={item.content.horarios} renderRow={(data) =>                                 
                 <ListItem> 
                 <View>
                     <Text>id: {data.id}</Text>
@@ -184,7 +196,7 @@ export default class Taller extends Component <Props>{
                     <Text>fecha taller{data.fechaTaller}</Text>
                     </View>                  
                 </ListItem>                            
-              } />
+              } /> */}
 
 {/* <List
             dataArray={item.content.talleres}
