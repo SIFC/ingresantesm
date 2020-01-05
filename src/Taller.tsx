@@ -24,7 +24,7 @@
 // ---------------------------------------------------------------------
 
 import React, { Component} from 'react';
-import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, Left, Right, Icon,Accordion, CardItem, Card, Body } from 'native-base';
+import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, Left, Right, Icon,Accordion, CardItem, Card, Body, Item, Grid, Col, Row } from 'native-base';
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Taller_detalles from './Taller_detalles';
@@ -144,17 +144,73 @@ export default class Taller extends Component <Props>{
     
     
  }
+ _renderHorarios(){
+  return(
+      // <List dataArray={this.state.horarios} renderRow={(data) =>                                 
+      //   <ListItem> 
+      //     <Left>
+      //       <Text>id: {data.id}</Text>
+      //       <Text>día:{data.dia}</Text>    
+      //      <Text>taller_id:{data.taller_id}</Text>
+      //     </Left>
+      //     </ListItem> 
+      //     <ListItem> 
+      //     <Left>
+      //      <Text>horario inicio:{data.horaInicio}</Text>
+      //     </Left>
+      //     <Left>
+      //       <Text>horario fin:{data.horaFin}</Text>
+      //     </Left>
+      //     <Left>
+      //      <Text>fecha taller{data.fechaTaller}</Text>
+      //     </Left>                 
+      //   </ListItem>                            
+      // } />
+
+      <Content>
+        <List dataArray={this.state.horarios} renderRow={(data) =>         
+          <ListItem>
+            <Grid>
+              <Left>
+                <Row>
+                  <Col style={{ backgroundColor: '#00000', height: 100 }}>
+                  <Text>id: \n</Text>
+                  <Text>{data.id}</Text>
+                  </Col>
+                </Row>
+              </Left>
+            </Grid> 
+          {/* <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
+            <Text>día:{data.dia}</Text>            
+            </Col>
+            <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
+            <Text>taller_id:{data.taller_id}</Text>         
+            </Col>
+            <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
+            <Text>horario inicio:{data.horaInicio}</Text>        
+            </Col>
+            <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
+            <Text>horario fin:{data.horaFin}</Text>        
+            </Col>
+            <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
+            <Text>fecha taller{data.fechaTaller}</Text>
+            </Col>                                                     */}
+          </ListItem>
+        } />
+      </Content>
+   
+  )}
+
   _renderContent =(item) =>{
-    
     console.log("talleres")
       console.log(item.content)
-     
     //  console.log("horarios ")
       console.log(item.content.horarios)
     // console.log("id ")
     // console.log(item.content.id)
     this.state.horarios = item.content.horarios
     console.log(this.state.horarios )
+    
     return (
      
       <Content padder>
@@ -175,28 +231,9 @@ export default class Taller extends Component <Props>{
               </Text> */}
               
               <Text> <Icon name="calendar" ></Icon> Horarios: </Text>
-              {this.state.horarios.forEach(data => {
-                // console.log(data)
-                 
-                
-                    <Text>id: {data.id}</Text>
-                   
-                  
-                 
-              })
-            }
-              {/* <List dataArray={item.content.horarios} renderRow={(data) =>                                 
-                <ListItem> 
-                <View>
-                    <Text>id: {data.id}</Text>
-                    <Text>día:{data.dia}</Text>
-                    <Text>taller_id:{data.taller_id}</Text>
-                    <Text>horario inicio:{data.horaInicio}</Text>
-                    <Text>horario fin:{data.horaFin}</Text>
-                    <Text>fecha taller{data.fechaTaller}</Text>
-                    </View>                  
-                </ListItem>                            
-              } /> */}
+             {this._renderHorarios()}
+             
+              
 
 {/* <List
             dataArray={item.content.talleres}
