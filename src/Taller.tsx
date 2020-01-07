@@ -49,6 +49,7 @@ export default class Taller extends Component <Props>{
     // headerTitle: () => <Header />,
    };
    state
+   dias
    constructor(props) {
     super(props);
     this.state = {
@@ -58,6 +59,7 @@ export default class Taller extends Component <Props>{
       horarios:any
      
     };
+   
   }
   
    render() {
@@ -146,58 +148,80 @@ export default class Taller extends Component <Props>{
  }
  _renderHorarios(){
   return(
-      // <List dataArray={this.state.horarios} renderRow={(data) =>                                 
-      //   <ListItem> 
-      //     <Left>
-      //       <Text>id: {data.id}</Text>
-      //       <Text>día:{data.dia}</Text>    
-      //      <Text>taller_id:{data.taller_id}</Text>
-      //     </Left>
-      //     </ListItem> 
-      //     <ListItem> 
-      //     <Left>
-      //      <Text>horario inicio:{data.horaInicio}</Text>
-      //     </Left>
-      //     <Left>
-      //       <Text>horario fin:{data.horaFin}</Text>
-      //     </Left>
-      //     <Left>
-      //      <Text>fecha taller{data.fechaTaller}</Text>
-      //     </Left>                 
-      //   </ListItem>                            
-      // } />
-
-      <Content>
-        <List dataArray={this.state.horarios} renderRow={(data) =>         
-          <ListItem>
-            <Grid>
-              <Left>
-                <Row>
-                  <Col style={{ backgroundColor: '#00000', height: 100 }}>
-                  <Text>id: \n</Text>
-                  <Text>{data.id}</Text>
-                  </Col>
-                </Row>
-              </Left>
-            </Grid> 
-          {/* <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
-            <Text>día:{data.dia}</Text>            
-            </Col>
-            <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
-            <Text>taller_id:{data.taller_id}</Text>         
-            </Col>
-            <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
-            <Text>horario inicio:{data.horaInicio}</Text>        
-            </Col>
-            <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
-            <Text>horario fin:{data.horaFin}</Text>        
-            </Col>
-            <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
-            <Text>fecha taller{data.fechaTaller}</Text>
-            </Col>                                                     */}
-          </ListItem>
-        } />
-      </Content>
+    <Content>
+      <List dataArray={this.state.horarios} renderRow={(data) =>                                 
+        <ListItem> 
+        
+          
+            {/* <Grid>
+              <Row>
+              <Col style={{ backgroundColor: '#635DB7', height: 100 }}><Text>día:{data.dia} </Text> </Col>
+              </Row>
+          
+              </Grid>  */}
+            <Card>
+        <CardItem  bordered>
+        <View> 
+            <Text>Fecha  del taller: {data.fechaTaller}</Text>
+            <Text>día: {data.dia} </Text> 
+            {/* <Text>taller_id:{data.taller_id}</Text> */}
+            <Text>horario inicio: {data.horaInicio}</Text>
+            <Text>horario fin: {data.horaFin}</Text>
+           
+            </View> 
+            </CardItem>
+            </Card>
+        </ListItem>                            
+      } />
+   </Content>
+   
+//       <Content>
+//         <List dataArray={this.state.horarios} renderRow={(data) =>         
+//           <ListItem>
+            
+//               <Text>día:{data.dia}</Text>  
+// <Text>taller_id:{data.taller_id}</Text>  
+//  <Text>horario inicio:{data.horaInicio}</Text> 
+// <Text>horario fin:{data.horaFin}</Text>  
+//  <Text>fecha taller{data.fechaTaller}</Text>
+//             <Grid>
+//               <Left>
+//                   <Text>día:{data.dia}</Text>  
+// <Text>taller_id:{data.taller_id}</Text>  
+//  <Text>horario inicio:{data.horaInicio}</Text> 
+// <Text>horario fin:{data.horaFin}</Text>  
+//  <Text>fecha taller{data.fechaTaller}</Text>
+//                 <Row>
+//                   <Col style={{ backgroundColor: '#00000'  }}>
+                
+//                   </Col>        
+                  
+//                 </Row>
+//                 <Row>
+//                 <Col style={{ backgroundColor: '#00000' }}>
+                  
+//                   </Col> 
+//                   </Row> 
+//                   <Row> 
+//                   <Col style={{ backgroundColor: '#00000' }}>
+                 
+//                   </Col> 
+//                   </Row>
+//                   <Row>
+//                   <Col style={{ backgroundColor: '#00000' }}>
+                  
+//                   </Col> 
+//                   </Row>
+//                   <Row>
+//                   <Col style={{ backgroundColor: '#00000' }}>
+                 
+//                   </Col> 
+//                   </Row>
+//               </Left>
+//             </Grid>                                            
+//           </ListItem>
+//         } />
+//       </Content>
    
   )}
 
