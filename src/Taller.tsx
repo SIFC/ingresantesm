@@ -32,6 +32,7 @@ import Home from './Home';
 import RenderToLayer from 'material-ui/internal/RenderToLayer';
 import { View } from 'react-native';
 import { any } from 'prop-types';
+import moment from "moment";
 // import React from 'react';
 
 interface Props {
@@ -49,15 +50,15 @@ export default class Taller extends Component <Props>{
     // headerTitle: () => <Header />,
    };
    state
-   dias
+  
    constructor(props) {
     super(props);
     this.state = {
       roles:any,
       alumno:false,
       profe:false,
-      horarios:any
-     
+      horarios:any,
+      dia:String
     };
    
   }
@@ -146,12 +147,37 @@ export default class Taller extends Component <Props>{
     
     
  }
+ renderDias(data){
+
+  switch (data.dia) {
+    case 1:
+      this.state.dia = "Lunes";
+      break;
+    case 2:
+      this.state.dia = "Martes";
+      break;
+    case 3:
+      this.state.dia = "Miercoles";
+      break;
+    case 4:
+      this.state.dia = "Jueves";
+      break;
+    case 5:
+      this.state.dia = "Viernes";
+      break;
+    default:
+      this.state.dia = "Fuera de Hora"
+      break;
+  }
+  }
+
  _renderHorarios(){
+  moment.locale('es');
   return(
     <Content>
       <List dataArray={this.state.horarios} renderRow={(data) =>                                 
         <ListItem> 
-        
+        {this.renderDias(data)}
           
             {/* <Grid>
               <Row>
@@ -159,18 +185,20 @@ export default class Taller extends Component <Props>{
               </Row>
           
               </Grid>  */}
+             
             <Card>
         <CardItem  bordered>
         <View> 
-            <Text>Fecha  del taller: {data.fechaTaller}</Text>
-            <Text>día: {data.dia} </Text> 
+            <Text>Fecha: {moment(data.fechaTaller).format("DD-MM-YYYY")}</Text>
+            <Text>día: {this.state.dia} </Text> 
             {/* <Text>taller_id:{data.taller_id}</Text> */}
-            <Text>horario inicio: {data.horaInicio}</Text>
-            <Text>horario fin: {data.horaFin}</Text>
+            <Text>comienza a las {moment(data.horaInicio).format("hh:mm")}</Text>
+            <Text>finaliza a las {moment(data.horaFin).format("hh:mm")}</Text>
            
             </View> 
             </CardItem>
             </Card>
+           
         </ListItem>                            
       } />
    </Content>
