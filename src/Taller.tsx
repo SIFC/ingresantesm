@@ -33,7 +33,7 @@ import RenderToLayer from 'material-ui/internal/RenderToLayer';
 import { View } from 'react-native';
 import { any } from 'prop-types';
 import moment from "moment";
-// import React from 'react';
+
 
 interface Props {
   navigation: any
