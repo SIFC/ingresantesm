@@ -1,27 +1,4 @@
-// import React, { Component } from 'react';
- 
-// import { StyleSheet, Platform, View, Text } from 'react-native';
 
-
-// export default class Taller extends Component{
-//       render() {
-//         return (
-//             <View style={styles.container}>
-//                   <Text> Taller</Text>
-//             </View>
-//         );
-//       }
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
-// ---------------------------------------------------------------------
 
 import React, { Component} from 'react';
 import { Container, Content, List, ListItem, Text, Separator, Button, H2, H3, H1, Left, Right, Icon,Accordion, CardItem, Card, Body, Item, Grid, Col, Row } from 'native-base';
@@ -33,6 +10,7 @@ import RenderToLayer from 'material-ui/internal/RenderToLayer';
 import { View } from 'react-native';
 import { any } from 'prop-types';
 import moment from "moment";
+import Inicio from './components/Inicio';
 
 
 interface Props {
@@ -42,11 +20,14 @@ interface Props {
 export default class Taller extends Component <Props>{
  
   static navigationOptions = {
-    title: 'Talleres',
+    title: 'Ingresantes 2020',
     headerTintColor: '#fff',
     headerStyle: {
       backgroundColor: '#891f1f',
+      
     },
+    headerLeft: null
+    // header: null,
     // headerTitle: () => <Header />,
    };
    state
@@ -74,46 +55,20 @@ export default class Taller extends Component <Props>{
    console.log(this.state.roles)
    console.log(talleres)
     return (
-      
-      <Container>
-        
-          {/* itemDivider */}
-          {/* <Separator bordered>
-            <Text>MIDFIELD</Text>
-          </Separator> */}
+
+      <Container>      
+          <Inicio></Inicio>
           <List  dataArray={talleres }
               renderRow={(item ) =>
-            
-              // <ListItem  last  onPress={() => this.props.navigation.navigate('Taller_detalles')} >
-              //   {/* <Button rounded light > */}
-              //   <Left>
-              //   <Text>  {item.titulo}</Text></Left>
-              // {/* </Button> */}
-              //  <Right>
-              //    <Icon name="arrow-forward"></Icon>
-              //  </Right>
-              //  <Accordion dataArray={[{ title:item.titulo, content:item  }]}/>
-              // </ListItem>
-
               <Content padder  style={{ backgroundColor: "white" }}>
                 <Accordion dataArray={[{ title:item.titulo, content: item }]}
                  renderHeader={this._renderHeader}
-                 renderContent={this._renderContent}
-                 
+                 renderContent={this._renderContent}                
                 />
-               
-            {/* <Button  light onPress={() => this.props.navigation.navigate('Taller_detalles')}>
-               <Text>  {item.titulo}</Text>
-            </Button> */}
-         
-             </Content>    
-                
-            }>
-                      
-          </List>      
-         
+             </Content>                   
+            }>                     
+          </List>              
         {/* <Footer></Footer> */}
-
      </Container>
     );
   }
@@ -203,53 +158,7 @@ export default class Taller extends Component <Props>{
       } />
    </Content>
    
-//       <Content>
-//         <List dataArray={this.state.horarios} renderRow={(data) =>         
-//           <ListItem>
-            
-//               <Text>día:{data.dia}</Text>  
-// <Text>taller_id:{data.taller_id}</Text>  
-//  <Text>horario inicio:{data.horaInicio}</Text> 
-// <Text>horario fin:{data.horaFin}</Text>  
-//  <Text>fecha taller{data.fechaTaller}</Text>
-//             <Grid>
-//               <Left>
-//                   <Text>día:{data.dia}</Text>  
-// <Text>taller_id:{data.taller_id}</Text>  
-//  <Text>horario inicio:{data.horaInicio}</Text> 
-// <Text>horario fin:{data.horaFin}</Text>  
-//  <Text>fecha taller{data.fechaTaller}</Text>
-//                 <Row>
-//                   <Col style={{ backgroundColor: '#00000'  }}>
-                
-//                   </Col>        
-                  
-//                 </Row>
-//                 <Row>
-//                 <Col style={{ backgroundColor: '#00000' }}>
-                  
-//                   </Col> 
-//                   </Row> 
-//                   <Row> 
-//                   <Col style={{ backgroundColor: '#00000' }}>
-                 
-//                   </Col> 
-//                   </Row>
-//                   <Row>
-//                   <Col style={{ backgroundColor: '#00000' }}>
-                  
-//                   </Col> 
-//                   </Row>
-//                   <Row>
-//                   <Col style={{ backgroundColor: '#00000' }}>
-                 
-//                   </Col> 
-//                   </Row>
-//               </Left>
-//             </Grid>                                            
-//           </ListItem>
-//         } />
-//       </Content>
+
    
   )}
 
@@ -271,7 +180,7 @@ export default class Taller extends Component <Props>{
             <Body>
               <View>
           <Text>{" "}Aula: {item.content.aula}  en {item.content.ubicacion} </Text>
-          <Text> Duración: {item.content.duracion} hs</Text>
+          <Text> Lugar: </Text>
           </View> 
           </Body>
         </CardItem>
@@ -284,24 +193,6 @@ export default class Taller extends Component <Props>{
               
               <Text> <Icon name="calendar" ></Icon> Horarios: </Text>
              {this._renderHorarios()}
-             
-              
-
-{/* <List
-            dataArray={item.content.talleres}
-            renderRow={data => {
-             
-                <ListItem
-                  >
-                  <Text>{data}</Text>
-                </ListItem>
-              
-            }}
-          /> */}
-
-                {/* <Button transparent   >
-                  <Icon name="calendar" ></Icon>
-                </Button> */}
              
               </View>
             </Body>
@@ -330,48 +221,3 @@ export default class Taller extends Component <Props>{
 
   
 }
-
-// *******************************************************
-
-// import React, { Component } from "react";
-// import { Container, Header, Content, Accordion, View, Text, Icon, Button } from "native-base";
-// const dataArray = [
-//   { title: "First Element", content: "Lorem ipsum dolor sit amet" },
-//   { title: "Second Element", content: "Lorem ipsum dolor sit amet" },
-//   { title: "Third Element", content: "Lorem ipsum dolor sit amet" }
-// ];
-// export default class AccordionCustomHeaderContentExample extends Component {
-//   _renderHeader(dataArray) {
-//     return (
-    
-//         <Text >
-//          {dataArray.title}
-//         </Text>
-     
-//     );
-//   }
-//   _renderContent(dataArray) {
-//     return (
-//       <Text>
-//         {dataArray.content}
-//         <Button  >
-//                <Text>  boton</Text>
-//           </Button>
-//       </Text>
-//     );
-//   }
-//   render() {
-//     return (
-//       <Container>
-       
-//         <Content padder>
-//           <Accordion
-//             dataArray={dataArray}
-//               renderHeader={this._renderHeader}
-//              renderContent={this._renderContent}
-//           />
-//         </Content>
-//       </Container>
-//     );
-//   }
-// }

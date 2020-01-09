@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, SafeAreaView, TextInput,Image  } from 'react-native';
-import { Container, Header, Content, Form, Item, Input, Label, Text, Separator , Button, CardItem} from 'native-base';
+import { Container, Header, Content, Form, Item, Input, Label, Text, Separator , Button, CardItem, Title} from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import {} from './components/Header'
@@ -14,7 +14,7 @@ interface Props {
 }
 export default class Login extends React.Component <Props> {
   static navigationOptions = {
-    title: 'INGRESO 2020',
+    title: ' Ingresantes 2020',
     headerTintColor: '#fff',
     headerStyle: {
       backgroundColor: '#891f1f',
@@ -88,7 +88,7 @@ export default class Login extends React.Component <Props> {
     return (
      
         <View style={styles.container}>  
-      
+          <Title>Facultad de Cs Exactas </Title>
         {/* <Header style={{ backgroundColor: '#891f1f'}}></Header> */}
         <Content>
        
