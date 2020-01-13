@@ -3,18 +3,15 @@ import { Container, Header, Content, Card, CardItem, Text, Body, H2, H1, H3, Vie
 export default class CardTransparentExample extends Component {
   render() {
     return (
-      <Container>
-     
-        <Content padder>
-          <Card transparent >
+    
+      <Content padder  >
+          <Card >
             <CardItem >
-              <Body style={{ flex: 1,  justifyContent: 'center', alignItems: 'center' }}>
+              <Body style={{   justifyContent: 'center', alignItems: 'center' }}>
               
               <View style={{ alignItems: "center"}} >
-              <Title>Facultad de Cs Exactas </Title>
-              <Text>
-              
-              </Text>
+              {/* <Title>Facultad de Cs Exactas </Title>
+               */}
                 <H2 >
                   Curso Introductorio 
                 </H2>
@@ -40,8 +37,8 @@ export default class CardTransparentExample extends Component {
               </Body>
             </CardItem>
           </Card>
-        </Content>
-      </Container>
+      
+         </Content> 
     );
   }
 }

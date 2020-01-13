@@ -26,11 +26,21 @@ export default class Taller extends Component <Props>{
       backgroundColor: '#891f1f',
       
     },
-    headerLeft: null
+    headerLeft: null,
+    headerRight: () => (
+          <Right>
+            <Button transparent light>
+              <Icon name='power' />
+              <Text>Salir</Text>
+            </Button>
+
+          </Right>
+    ),
     // header: null,
     // headerTitle: () => <Header />,
    };
-   state
+   state 
+
   
    constructor(props) {
     super(props);
@@ -58,6 +68,7 @@ export default class Taller extends Component <Props>{
 
       <Container>      
           <Inicio></Inicio>
+          <Text></Text>
           <List  dataArray={talleres }
               renderRow={(item ) =>
               <Content padder  style={{ backgroundColor: "white" }}>
