@@ -20,29 +20,30 @@ interface Props {
 export default class Taller extends Component <Props>{
  
   static navigationOptions = {
+    
     title: 'Ingresantes 2020',
     headerTintColor: '#fff',
     headerStyle: {
       backgroundColor: '#891f1f',
       
     },
-    headerLeft: null,
-    headerRight: () => (
-          <Right>
-            <Button transparent light>
-              <Icon name='power' />
-              <Text>Salir</Text>
-            </Button>
-
-          </Right>
-    ),
+    //  headerLeft: ,
+    // headerRight: () => (
+      
+    //       <Right>
+    //         <Button transparent light onPress={() => alert('Salir')}>
+    //           <Icon name='power' />
+    //           {/* <Text>Salir</Text> */}
+            
+    //         </Button>
+    //       </Right>
+    // ),
     // header: null,
     // headerTitle: () => <Header />,
    };
    state 
-
-  
    constructor(props) {
+
     super(props);
     this.state = {
       roles:any,
@@ -52,18 +53,23 @@ export default class Taller extends Component <Props>{
       dia:String
     };
    
+  
   }
   
    render() {
     // const { params } = this.props.navigation.state;
     const { navigation } = this.props;
     const datosGenerales = navigation.getParam('datosGenerales');
-    this.state.roles = datosGenerales.roles
+    this.setState({roles: datosGenerales.roles});
     const talleres = datosGenerales.talleres
    
    console.log( datosGenerales)
+   console.log('roles')
    console.log(this.state.roles)
+   console.log('talleres')
    console.log(talleres)
+   console.log('horarios')
+   console.log(this.state.horarios)
     return (
 
       <Container>      
@@ -83,7 +89,10 @@ export default class Taller extends Component <Props>{
      </Container>
     );
   }
-   
+  renderVolver() {
+    this.props.navigation.navigate('Login')
+
+  };
    _renderHeader(item, expanded) {
     return (
       <View style={{
@@ -105,10 +114,10 @@ export default class Taller extends Component <Props>{
     this.state.roles.forEach(element => {
             
       if(element.description == 'Alumno')
-      this.state.alumno = true;
+      this.setState({alumno:true})
      console.log(this.state.alumno )
      if(element.description == 'Profesor')
-     this.state.profe = true;
+     this.setState({profesor:true})
     });
     
     
