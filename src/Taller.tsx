@@ -50,7 +50,8 @@ export default class Taller extends Component <Props>{
       alumno:false,
       profe:false,
       horarios:any,
-      dia:String
+      dia:String,
+      usuario:String
     };
    
   
@@ -60,14 +61,16 @@ export default class Taller extends Component <Props>{
     // const { params } = this.props.navigation.state;
     const { navigation } = this.props;
     const datosGenerales = navigation.getParam('datosGenerales');
-    this.setState({roles: datosGenerales.roles});
+    this.state.roles = datosGenerales.roles
+    // this.setState({roles: datosGenerales.roles});
     const talleres = datosGenerales.talleres
-   
+    const horarios = datosGenerales.horarios
+    console.log('datos generales')
    console.log( datosGenerales)
-   console.log('roles')
-   console.log(this.state.roles)
-   console.log('talleres')
-   console.log(talleres)
+  //  console.log('roles')
+  //  console.log(this.state.roles)
+  //  console.log('talleres')
+  //  console.log(talleres)
    console.log('horarios')
    console.log(this.state.horarios)
     return (
@@ -114,10 +117,12 @@ export default class Taller extends Component <Props>{
     this.state.roles.forEach(element => {
             
       if(element.description == 'Alumno')
-      this.setState({alumno:true})
+      // this.setState({alumno:true})
+      this.state.alumno = true;
      console.log(this.state.alumno )
      if(element.description == 'Profesor')
-     this.setState({profesor:true})
+    //  this.setState({profesor:true})
+    this.state.profesor = true;
     });
     
     
@@ -146,7 +151,7 @@ export default class Taller extends Component <Props>{
   }
   }
 
- _renderHorarios(){
+ _renderHorarios(item){
   moment.locale('es');
   return(
     <Content>
@@ -170,10 +175,15 @@ export default class Taller extends Component <Props>{
             <Text>comienza a las {moment(data.horaInicio).format("hh:mm")}</Text>
             <Text>finaliza a las {moment(data.horaFin).format("hh:mm")}</Text>
            
-            </View> 
-            </CardItem>
-            </Card>
            
+            </View>
+            
+            </CardItem>
+           
+            </Card>
+            <Button vertical rounded light onPress={() =>this.props.navigation.navigate('Lector_Qr', {user_id:data.id})}>             
+           <Text> Presente</Text>
+         </Button> 
         </ListItem>                            
       } />
    </Content>
@@ -212,9 +222,10 @@ export default class Taller extends Component <Props>{
               </Text> */}
               
               <Text> <Icon name="calendar" ></Icon> Horarios: </Text>
-             {this._renderHorarios()}
-             
+             {this._renderHorarios(item.content)}
+           
               </View>
+              
             </Body>
         </CardItem>
         
