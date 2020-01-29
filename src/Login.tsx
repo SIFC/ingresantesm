@@ -69,7 +69,7 @@ export default class Login extends React.Component <Props> {
       let json = await response.json();
       this.setState({ datosGenerales: json })
       this.props.navigation.navigate('Taller', { datosGenerales: this.state.datosGenerales }) //{datosGenerales: this.state.datosGenerales}
-      console.log(this.state.datosGenerales)
+      // console.log(this.state.datosGenerales)
     }
     else
     {

@@ -7,7 +7,7 @@ import Header from './components/Header'
 import Taller_detalles from './Taller_detalles';
 import Home from './Home';
 import RenderToLayer from 'material-ui/internal/RenderToLayer';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import { any } from 'prop-types';
 import moment from "moment";
 import Inicio from './components/Inicio';
@@ -63,16 +63,17 @@ export default class Taller extends Component <Props>{
     const datosGenerales = navigation.getParam('datosGenerales');
     this.state.roles = datosGenerales.roles
     // this.setState({roles: datosGenerales.roles});
+    this.state.usuario = datosGenerales.id
     const talleres = datosGenerales.talleres
     const horarios = datosGenerales.horarios
-    console.log('datos generales')
-   console.log( datosGenerales)
+    // console.log('datos generales')
+  //  console.log( datosGenerales)
   //  console.log('roles')
   //  console.log(this.state.roles)
   //  console.log('talleres')
   //  console.log(talleres)
-   console.log('horarios')
-   console.log(this.state.horarios)
+  //  console.log('horarios')
+  //  console.log(this.state.horarios)
     return (
 
       <Container>      
@@ -167,23 +168,28 @@ export default class Taller extends Component <Props>{
               </Grid>  */}
              
             <Card>
-        <CardItem  bordered>
-        <View> 
-            <Text>Fecha: {moment(data.fechaTaller).format("DD-MM-YYYY")}</Text>
-            <Text>día: {this.state.dia} </Text> 
+        <CardItem  bordered> 
+        <View style={{ justifyContent: 'center'} }>
+        <Grid>  
+              <Row>  
+              <Col style={{  width: 200 }}>
+            <H1>Día: {this.state.dia}</H1>
+            <Text>fecha: {moment(data.fechaTaller).format("DD-MM-YYYY")}</Text> 
+            <Text>lugar: {data.ubicacion}</Text>
+            <Text>aula: {data.aula}</Text>
             {/* <Text>taller_id:{data.taller_id}</Text> */}
-            <Text>comienza a las {moment(data.horaInicio).format("hh:mm")}</Text>
-            <Text>finaliza a las {moment(data.horaFin).format("hh:mm")}</Text>
-           
-           
+            <Text>desde {moment(data.horaInicio).format("hh:mm")} hasta {moment(data.horaFin).format("hh:mm")} </Text>        
+            </Col>
+            </Row> 
+            </Grid>
             </View>
             
             </CardItem>
-           
-            </Card>
-            <Button vertical rounded light onPress={() =>this.props.navigation.navigate('Lector_Qr', {user_id:data.id})}>             
+            <Button vertical rounded light onPress={() =>this.props.navigation.navigate('Lector_Qr', {user_id:this.state.usuario})}>             
            <Text> Presente</Text>
          </Button> 
+            </Card>
+            
         </ListItem>                            
       } />
    </Content>
@@ -193,27 +199,27 @@ export default class Taller extends Component <Props>{
   )}
 
   _renderContent =(item) =>{
-    console.log("talleres")
-      console.log(item.content)
+    // console.log("talleres")
+      // console.log(item.content)
     //  console.log("horarios ")
-      console.log(item.content.horarios)
-    // console.log("id ")
-    // console.log(item.content.id)
+      // console.log(item.content.horarios)
+     console.log("id ")
+     console.log(this.state.usuario)
     this.state.horarios = item.content.horarios
-    console.log(this.state.horarios )
+    // console.log(this.state.horarios )
     
     return (
      
       <Content padder>
       <Card>
-        <CardItem  bordered>
+        {/* <CardItem  bordered>
             <Body>
               <View>
           <Text>{" "}Aula: {item.content.aula}  en {item.content.ubicacion} </Text>
           <Text> Lugar: </Text>
           </View> 
           </Body>
-        </CardItem>
+        </CardItem> */}
         <CardItem >
             <Body>
             <View>
@@ -228,11 +234,11 @@ export default class Taller extends Component <Props>{
               
             </Body>
         </CardItem>
-        
+         
         <CardItem footer bordered >              
          {this.renderElement()}
           { this.state.alumno?
-           <Button vertical rounded light onPress={() =>this.props.navigation.navigate('Lector_Qr', {user_id:item.content.id})}>             
+           <Button vertical rounded light onPress={() =>this.props.navigation.navigate('Lector_Qr', {user_id:this.state.usuario})}>             
            <Text>Marcar Presente</Text>
          </Button>
            
@@ -252,3 +258,4 @@ export default class Taller extends Component <Props>{
 
   
 }
+
