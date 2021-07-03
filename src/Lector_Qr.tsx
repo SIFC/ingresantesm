@@ -105,18 +105,19 @@ export default class Lector_Qr extends Component <Props>{
    let formData = new FormData();
    formData.append('user_id', this.datos.user_id )
    formData.append('qr', data)
-   formData.append('fecha', '1580731200000')//
+   formData.append('timestamp', '1580731200000')//
    console.log(formData)
   fetch( this.state.server +'/api/presente', {
       method: 'POST',
       body: formData
       
   }
-  ).then( (response) => response.text())
-    .then(text => { 
-      console.log(text)
+  ).then( (response) => response.json())
+    .then(json => { 
+      console.log(json)
       this.props.navigation.navigate('Taller') 
-      alert(text)//aca puede venir presente 
+      alert(json.data)//aca puede venir presente 
+      
     }) // onPress={() => this.props.navigation.navigate('Taller')}
     .catch(error => alert(error)
     );// 
